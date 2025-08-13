@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ProductApp
 
 A Spring Boot application for managing products with CRUD operations: add, delete, update, search, and view all products.
@@ -40,3 +41,6 @@ A Spring Boot application for managing products with CRUD operations: add, delet
 - `GET /products/search?name=...` - Search products
 - `GET /products` - View all products
 - `GET /products/{id}` - View product by ID
+=======
+# ProductApplication
+>>>>>>> 54f02aada0c8b2cc577c6602d0652aff6ec54152

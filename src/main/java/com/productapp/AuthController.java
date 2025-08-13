@@ -1,38 +1,45 @@
 package com.productapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
+@RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
+    
     @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private UserDetailsService userDetailsService;
-    @Autowired
-    private JwtUtil jwtUtil;
+    private UserService userService;
 
-    @PostMapping("/authenticate")
-    public Map<String, String> createAuthenticationToken(@RequestBody Map<String, String> authRequest) throws Exception {
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         try {
-            Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.get("username"), authRequest.get("password")));
-        } catch (AuthenticationException e) {
-            throw new Exception("Incorrect username or password", e);
+            userService.registerUser(request.getEmail(), request.getPassword());
+            return ResponseEntity.ok(new MessageResponse("User registered successfully"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.get("username"));
-        final String jwt = jwtUtil.generateToken(userDetails);
-        Map<String, String> response = new HashMap<>();
-        response.put("token", jwt);
-        return response;
+    }
+
+    static class RegisterRequest {
+        private String email;
+        private String password;
+
+        public String getEmail() { return email; }
+        public void setEmail(String email) { this.email = email; }
+        public String getPassword() { return password; }
+        public void setPassword(String password) { this.password = password; }
+    }
+
+    static class MessageResponse {
+        private String message;
+
+        public MessageResponse(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() { return message; }
+        public void setMessage(String message) { this.message = message; }
     }
 }

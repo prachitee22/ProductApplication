@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -53,5 +54,38 @@ public class ProductController {
         } else {
             return ResponseEntity.badRequest().body("Product not available or out of stock.");
         }
+    }
+    
+    @GetMapping("/purchases")
+    public List<Purchase> getAllPurchases() {
+        return productService.getAllPurchases();
+    }
+    
+    @GetMapping("/purchases/user")
+    public List<Purchase> getUserPurchases() {
+        return productService.getUserPurchases();
+    }
+    
+    @PostMapping("/{id}/cart")
+    public ResponseEntity<String> addToCart(@PathVariable Long id) {
+        productService.addToCart(id);
+        return ResponseEntity.ok("Product added to cart");
+    }
+    
+    @GetMapping("/cart")
+    public List<Cart> getCartItems() {
+        return productService.getCartItems();
+    }
+    
+    @DeleteMapping("/cart/{id}")
+    public ResponseEntity<String> removeFromCart(@PathVariable Long id) {
+        productService.removeFromCart(id);
+        return ResponseEntity.ok("Product removed from cart");
+    }
+    
+    @PutMapping("/cart/{id}/decrease")
+    public ResponseEntity<String> decreaseCartQuantity(@PathVariable Long id) {
+        productService.decreaseCartQuantity(id);
+        return ResponseEntity.ok("Quantity decreased");
     }
 }

@@ -1,0 +1,9 @@
+com\productapp\AuthController.class
+com\productapp\ProductAppApplication.class
+com\productapp\SecurityConfig.class
+com\productapp\ProductController.class
+com\productapp\JwtUtil.class
+com\productapp\ProductRepository.class
+com\productapp\ProductService.class
+com\productapp\Product.class
+com\productapp\JwtRequestFilter.class
