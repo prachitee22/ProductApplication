@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+Tasks Completed
+
+1. Explored about the GenAi
+2. Explore the Features of GithubCoplit.
+3. Created the whole Product App Spring Boot Application Backend using the GithubCopilot.
+4. In that creted the product service to add delete update search view and buy the product.
+5. Later added the role based security.
+6. At first added the basic authentication.
+7. Then added the JWT token Based Security to the application.
+=======
+Tasks Completed
+
+1. Explored about the GenAi
+2. Explore the Features of GithubCoplit.
+3. Created the whole Product App Spring Boot Application Backend using the GithubCopilot.
+4. In that creted the product service to add delete update search view and buy the product.
+5. Later added the role based security.
+6. At first added the basic authentication.
+7. Then added the JWT token Based Security to the application.
+>>>>>>> 49f831d1b292e39051886f9dc4134b204ba721c0
+8. Tested the all apis in the PostMan.
