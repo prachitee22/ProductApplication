@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Prompts given to github copilot to create ProductApp
 
 
@@ -27,4 +28,35 @@ Prompts given to github copilot to create ProductApp
 
 10.Apply jwt token based security not basic auth.
 
+=======
+Prompts given to github copilot to create ProductApp
+
+
+*used copilot in Agent mode
+
+1. Create Spring boot ProductAppit has crud operations add delete update search and view all products.
+
+2.Design project structure and required files.
+
+2. Review the files it has import errors.
+
+3. Review product.java file is has import error.
+
+4. In add context added - problems file.Resolve all the problems.
+
+5. Run the application.
+
+7. Add one more feature to buy the product.
+
+8.Add authentication to buy the product.
+
+9. Add admin and user role.
+
+8. Use in memory users and add the require dependencies.
+
+9. Modi security config.java add update delete search and view all product api are for admin and user can only view all products search products and buy products.
+
+10.Apply jwt token based security not basic auth.
+
+>>>>>>> 49f831d1b292e39051886f9dc4134b204ba721c0
 11. Import correct dependancies and versions of it in pom.xml file.
